@@ -178,7 +178,7 @@ h2.sec-title.light{color:var(--white)}
 .f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .f-group{display:flex;flex-direction:column;gap:6px}
 .f-label{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35)}
-.f-input,.f-textarea,.f-select{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--white);font-family:'Outfit',sans-serif;font-size:14px;padding:13px 16px;border-radius:var(--r);outline:none;transition:border-color .2s,background .2s;width:100%}
+.f-input,.f-textarea,.f-select{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--white);font-family:'Outfit',sans-serif;font-size:14px;padding:13px 16px;border-radius:var(--r);outline:none;transition:all .2s;width:100%}
 .f-input:focus,.f-textarea:focus,.f-select:focus{border-color:var(--gold);background:rgba(200,149,42,.05)}
 .f-input::placeholder,.f-textarea::placeholder{color:rgba(255,255,255,.2)}
 .f-select option{background:var(--navy-2);color:var(--white)}
@@ -196,7 +196,7 @@ footer p{font-size:12px;color:rgba(255,255,255,.25)}
 .foot-links a{font-size:12px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s}
 .foot-links a:hover{color:var(--gold)}
 
-.toast{position:fixed;bottom:32px;right:32px;background:var(--navy);color:var(--white);border:1px solid var(--gold);border-radius:var(--r);padding:14px 22px;font-size:14px;z-index:9000;transform:translateY(80px);opacity:0;transition:all .4s cubic-bezier(.22,.61,.36,1)}
+.toast{position:fixed;bottom:32px;right:32px;background:rgba(8,23,46,.95);color:var(--white);border:1px solid var(--gold);border-radius:var(--r);padding:14px 22px;font-size:14px;z-index:9000;transform:translateY(80px);opacity:0;transition:all .4s cubic-bezier(.22,.61,.36,1)}
 .toast.show{transform:translateY(0);opacity:1}
 .toast b{color:var(--gold)}
 
@@ -439,27 +439,18 @@ footer p{font-size:12px;color:rgba(255,255,255,.25)}
       <h2 class="sec-title light">Get in Touch</h2>
       <p>Open to senior data analyst roles, BI analyst positions, and consulting opportunities — remote-first, with preference for fintech, banking, or growth-stage companies.</p>
       <div class="contact-details">
-        <div class="c-row"><div class="c-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(200,149,42,.8)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="c-text"><a href="mailto:oritogunfemi@gmail.com">oritogunfemi@gmail.com</a></div></div>
+        <div class="c-row"><div class="c-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(200,149,42,.8)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="c-text"><a href="/cdn-cgi/l/email-protection#5b3429322f343c2e353d3e36321b3c363a323775383436"><span class="__cf_email__" data-cfemail="aac5d8c3dec5cddfc4cccfc7c3eacdc7cbc3c684c9c5c7">[email&#160;protected]</span></a></div></div>
         <div class="c-row"><div class="c-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(200,149,42,.8)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l1.97-1.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div class="c-text"><a href="tel:+2347067286651">(+234) 70-67286651</a></div></div>
         <div class="c-row"><div class="c-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(200,149,42,.8)" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><div class="c-text"><a href="https://www.linkedin.com/in/femioritogun/" target="_blank">linkedin.com/in/femioritogun</a></div></div>
         <div class="c-row"><div class="c-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(200,149,42,.8)" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div><div class="c-text"><a href="https://github.com/oritogunf" target="_blank">github.com/oritogunf</a></div></div>
         <div class="c-row"><div class="c-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(200,149,42,.8)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="c-text">Lagos, Nigeria · Open to Remote</div></div>
       </div>
     </div>
-    <form class="contact-form reveal reveal-d1" action="https://formspree.io/f/mojyajnn" method="POST">
-      <div class="f-row">
-        <div class="f-group"><label class="f-label">Name</label><input type="text" class="f-input" placeholder="Jane Smith" required/></div>
-        <div class="f-group"><label class="f-label">Company</label><input type="text" class="f-input" placeholder="Acme Corp"/></div>
-      </div>
+    <form class="contact-form reveal reveal-d1" action="https://formspree.io/f/mojyajnn" method="POST" onsubmit="handleSubmit(event)">
+      <div class="f-group"><label class="f-label">Name</label><input type="text" class="f-input" placeholder="Jane Smith" required/></div>
       <div class="f-group"><label class="f-label">Email</label><input type="email" class="f-input" placeholder="jane@acme.com" required/></div>
       <div class="f-group"><label class="f-label">Subject</label>
-        <select class="f-input f-select">
-          <option value="" disabled selected>Select a topic…</option>
-          <option>Full-time role opportunity</option>
-          <option>Freelance / consulting project</option>
-          <option>Collaboration</option>
-          <option>Other</option>
-        </select>
+        <select class="f-input f-select"><option value="" disabled selected>Select a topic…</option><option>Full-time role opportunity</option><option>Freelance / consulting project</option><option>Collaboration</option><option>Other</option></select>
       </div>
       <div class="f-group"><label class="f-label">Message</label><textarea class="f-textarea" placeholder="Tell me about the role or opportunity..." required></textarea></div>
       <button type="submit" class="f-submit">Send Message <span class="f-arrow">→</span></button>
@@ -473,12 +464,11 @@ footer p{font-size:12px;color:rgba(255,255,255,.25)}
   <div class="foot-links">
     <a href="https://www.linkedin.com/in/femioritogun/" target="_blank">LinkedIn</a>
     <a href="https://github.com/oritogunf" target="_blank">GitHub</a>
-    <a href="mailto:oritogunfemi@gmail.com">Email</a>
+    <a href="/cdn-cgi/l/email-protection#056a776c716a62706b6360686c456268646c692b666a68">Email</a>
   </div>
 </footer>
 
-<script>
-// CURSOR
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
 document.addEventListener('mousemove',e=>{
   cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';
@@ -489,17 +479,14 @@ document.querySelectorAll('a,button,.proj-card,.cert-card,.tl-item,.pill').forEa
   el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';cur.style.background='var(--gold)';ring.style.width='36px';ring.style.height='36px';});
 });
 
-// PROGRESS BAR
 window.addEventListener('scroll',()=>{
   document.getElementById('progress-bar').style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
   document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60);
 });
 
-// PARTICLES
 const pc=document.getElementById('particles');
 for(let i=0;i<28;i++){const p=document.createElement('div');p.className='particle';const s=Math.random()*5+2;p.style.cssText=`width:${s}px;height:${s}px;background:rgba(200,149,42,${Math.random()*.3+.05});left:${Math.random()*100}%;top:${Math.random()*100+100}%;animation-duration:${Math.random()*20+15}s;animation-delay:${Math.random()*15}s`;pc.appendChild(p);}
 
-// COUNTERS
 function animateCounters(){
   document.querySelectorAll('.stat-num').forEach(el=>{
     const target=+el.dataset.target,prefix=el.dataset.prefix||'',suffix=el.dataset.suffix||'';
@@ -508,17 +495,14 @@ function animateCounters(){
   });
 }
 let ran=false;
-new IntersectionObserver(entries=>{if(entries[0].isIntersecting&&!ran){animateCounters();ran=true;}},{threshold:.5}).observe(document.getElementById('hero'));
+new IntersectionObserver(e=>{if(e[0].isIntersecting&&!ran){animateCounters();ran=true;}},{threshold:.5}).observe(document.getElementById('hero'));
 
-// REVEAL
-const ro=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.1});
+const ro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
-// SKILL BARS
-const sbo=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.querySelectorAll('.skill-bar-fill').forEach(b=>b.style.width=b.dataset.width+'%');}),{threshold:.2});
+const sbo=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.querySelectorAll('.skill-bar-fill').forEach(b=>b.style.width=b.dataset.width+'%');}),{threshold:.2});
 document.querySelectorAll('.skill-panel').forEach(p=>sbo.observe(p));
 
-// SKILL TABS
 document.querySelectorAll('.skill-tab').forEach(btn=>{
   btn.addEventListener('click',()=>{
     document.querySelectorAll('.skill-tab').forEach(b=>b.classList.remove('active'));
@@ -530,14 +514,12 @@ document.querySelectorAll('.skill-tab').forEach(btn=>{
   });
 });
 
-// TIMELINE
 function toggleTL(item){
   const body=item.querySelector('.tl-body'),toggle=item.querySelector('.tl-toggle'),isOpen=body.classList.contains('open');
   document.querySelectorAll('.tl-body.open').forEach(b=>{b.classList.remove('open');b.closest('.tl-item').querySelector('.tl-toggle').textContent='+';});
   if(!isOpen){body.classList.add('open');toggle.textContent='−';}
 }
 
-// FILTER
 document.querySelectorAll('.filter-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{
     document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
@@ -547,14 +529,27 @@ document.querySelectorAll('.filter-btn').forEach(btn=>{
   });
 });
 
-// CONTACT
 function handleSubmit(e){
   e.preventDefault();
   const btn=e.target.querySelector('.f-submit');
-  btn.innerHTML='✓ Sent!';btn.style.background='#1a6b3a';btn.style.color='#fff';
-  const toast=document.getElementById('toast');toast.classList.add('show');
-  setTimeout(()=>toast.classList.remove('show'),4000);
-  setTimeout(()=>{btn.innerHTML='Send Message <span class="f-arrow">→</span>';btn.style.background='';btn.style.color='';e.target.reset();},3000);
+  const form=e.target;
+  btn.innerHTML='Sending…';btn.style.opacity='.7';btn.disabled=true;
+  fetch('https://formspree.io/f/mojyajnn',{
+    method:'POST',
+    body:new FormData(form),
+    headers:{Accept:'application/json'}
+  }).then(r=>{
+    if(r.ok){
+      btn.innerHTML='✓ Sent!';btn.style.background='#166534';btn.style.color='#fff';btn.style.opacity='1';
+      const toast=document.getElementById('toast');toast.classList.add('show');
+      setTimeout(()=>toast.classList.remove('show'),4000);
+      setTimeout(()=>{btn.innerHTML='Send Message <span class="f-arrow">→</span>';btn.style.background='';btn.style.color='';btn.disabled=false;form.reset();},3000);
+    } else {
+      btn.innerHTML='Try Again';btn.style.background='#991b1b';btn.style.color='#fff';btn.style.opacity='1';btn.disabled=false;
+    }
+  }).catch(()=>{
+    btn.innerHTML='Try Again';btn.style.background='#991b1b';btn.style.color='#fff';btn.style.opacity='1';btn.disabled=false;
+  });
 }
 </script>
 </body>
