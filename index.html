@@ -1,238 +1,561 @@
-<html>
-	<head>
-		<title>FEMI - Analytics</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-              
-		<!-- add icon link -->
-		<link rel="icon" href="images/pic01.jpg" type=image/jpg/>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Femi Oritogun · Senior Data Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#08172E;--navy-2:#0D2240;--navy-3:#152E52;
+  --gold:#C8952A;--gold-l:#F0C060;--gold-d:#8A6015;
+  --cream:#F7F3EC;--cream-2:#EDE7DB;--white:#FFFFFF;
+  --text:#08172E;--text-2:#3A4A60;--text-3:#6B7A90;
+  --border:#D5CFC4;--r:4px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;cursor:none}
+#cursor{position:fixed;width:10px;height:10px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s}
+#cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid var(--gold);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .12s ease;opacity:.6}
+#progress-bar{position:fixed;top:0;left:0;height:2px;background:var(--gold);z-index:1000;width:0%;transition:width .1s}
 
-		<!-- Wrapper -->
-			<div id="wrapper" class="fade-in">
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:68px;transition:background .4s}
+nav.scrolled{background:rgba(8,23,46,0.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(200,149,42,0.2)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:22px;color:var(--white)}
+.nav-logo span{color:var(--gold);font-style:italic}
+.nav-links{display:flex;gap:40px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;transition:color .2s;position:relative;padding-bottom:4px}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width .3s}
+.nav-links a:hover{color:var(--gold-l)}.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--gold);color:var(--navy);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:9px 22px;border-radius:2px;text-decoration:none;transition:background .2s}
+.nav-cta:hover{background:var(--gold-l)}
 
-				<!-- Intro -->
-					<div id="intro">
-						<h1>DATA ANALYTICS <br />PORTFOLIO
-						</h1>
-						<h2> Femi Oritogun</h2>
-						<p>Using data analytics technologies and techniques to enable organizations to make 
-							more-informed strategic decisions. <br/> Specialties: SQL Server, Python, MS Power BI, Tableau, Azure Data Factory, KNIME, SSIS, SSAS and SSRS </p>
-						</p>
-							<!-- <a href="https://www.linkedin.com/in/femioritogun/">@Femi</a> </p> -->
-						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
-					</div>
+/* HERO */
+#hero{min-height:100vh;background:var(--navy);display:flex;align-items:center;padding:110px 56px 80px;position:relative;overflow:hidden}
+.hero-particles{position:absolute;inset:0;overflow:hidden}
+.particle{position:absolute;border-radius:50%;opacity:0;animation:floatUp linear infinite}
+@keyframes floatUp{0%{opacity:0;transform:translateY(0) scale(0)}20%{opacity:.4}80%{opacity:.15}100%{opacity:0;transform:translateY(-100vh) scale(1.5)}}
+.hero-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(200,149,42,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(200,149,42,.04) 1px,transparent 1px);background-size:72px 72px}
+.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(200,149,42,.08) 0%,transparent 70%);top:-100px;right:-100px;animation:pulseGlow 6s ease-in-out infinite}
+@keyframes pulseGlow{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.15);opacity:1}}
+.hero-content{position:relative;z-index:2;max-width:820px}
+.hero-tag{display:inline-flex;align-items:center;gap:10px;background:rgba(200,149,42,.12);border:1px solid rgba(200,149,42,.3);color:var(--gold-l);font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;padding:7px 16px;border-radius:20px;margin-bottom:32px}
+.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+h1.hero-name{font-family:'Playfair Display',serif;font-size:clamp(52px,8vw,90px);color:var(--white);line-height:1.0;margin-bottom:10px}
+h1.hero-name em{color:var(--gold);font-style:italic}
+.hero-role{font-size:clamp(16px,2vw,22px);font-weight:300;color:rgba(255,255,255,.5);margin-bottom:32px}
+.hero-desc{font-size:16px;color:rgba(255,255,255,.68);max-width:560px;line-height:1.85;margin-bottom:52px}
+.hero-stats{display:flex;gap:56px;margin-bottom:52px;padding:32px 0;border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07)}
+.stat-num{font-family:'Playfair Display',serif;font-size:40px;color:var(--gold-l);line-height:1;display:block}
+.stat-lbl{font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.08em;text-transform:uppercase;max-width:100px;line-height:1.4;display:block;margin-top:5px}
+.hero-btns{display:flex;gap:14px}
+.btn-gold{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--navy);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:15px 30px;border-radius:2px;transition:all .2s;border:none;cursor:pointer}
+.btn-gold:hover{background:var(--gold-l);transform:translateY(-2px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(255,255,255,.75);font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:15px 30px;border-radius:2px;border:1px solid rgba(255,255,255,.15);transition:all .2s}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-l);transform:translateY(-2px)}
+.scroll-hint{position:absolute;bottom:40px;left:56px;display:flex;align-items:center;gap:12px;color:rgba(255,255,255,.35);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.scroll-line{width:40px;height:1px;background:rgba(255,255,255,.25);position:relative;overflow:hidden}
+.scroll-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--gold);animation:scanLine 2s ease-in-out infinite}
+@keyframes scanLine{0%{left:-100%}100%{left:200%}}
 
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">HOME</a>
-					</header>
+/* SECTIONS */
+section{padding:100px 56px}
+.sec-label{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.sec-label::before{content:'';width:28px;height:1px;background:var(--gold)}
+h2.sec-title{font-family:'Playfair Display',serif;font-size:clamp(30px,4vw,46px);line-height:1.1;color:var(--navy);margin-bottom:16px}
+h2.sec-title.light{color:var(--white)}
+.sec-sub{font-size:15px;color:var(--text-3);max-width:480px;line-height:1.7;margin-bottom:60px}
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li><a href="about.html">About</a></li>
-							<li class="active"><a href="index.html">Projects</a></li>
-							<li><a href="elements.html">Elements Reference</a></li>
-														
-						</ul>
-						<ul class="icons alt">
-							<li><a href="https://www.linkedin.com/in/femioritogun/" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
-							<li><a href="https://github.com/oritogunf" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav>
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}.reveal-d3{transition-delay:.3s}
 
-				<!-- Main -->
-					<div id="main">
+/* ABOUT */
+#about{background:var(--white);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-img-frame{width:100%;aspect-ratio:4/5;background:var(--navy-3);border-radius:var(--r);display:flex;align-items:center;justify-content:center;position:relative}
+.about-monogram{font-family:'Playfair Display',serif;font-size:120px;color:rgba(200,149,42,.15);user-select:none}
+.about-badge{position:absolute;bottom:-20px;right:-20px;background:var(--gold);color:var(--navy);padding:18px 22px;border-radius:var(--r);text-align:center}
+.about-badge-num{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;line-height:1}
+.about-badge-lbl{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-top:2px}
+.about-text p{font-size:15px;color:var(--text-2);line-height:1.85;margin-bottom:20px}
+.about-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.pill{font-size:12px;font-weight:500;color:var(--navy-3);background:var(--cream-2);border:1px solid var(--border);padding:5px 14px;border-radius:20px;transition:all .2s;cursor:default}
+.pill:hover{background:var(--gold);color:var(--navy);border-color:var(--gold);transform:translateY(-2px)}
 
-						<!-- Featured Post -->
-							<article class="post featured">
-								<header class="major">
-									<span class="date">May 29, 2020</span>
-									<h2><a href="#">EXPLORATORY <br />
-									DATA ANALYSIS</a></h2>
-									<p>Below is the Progressive chart from February 28th to May 27th, 2020.</p>
-								</header>
-								<a href="fullstory1.html" class="image main"><img src="images/CoV19.gif" alt="" /></a>
-								<ul class="actions special">
-									<li><a href="fullstory1.html" class="button large">Full Story</a></li>
-								</ul>
-							</article>
+/* PROJECTS */
+#projects{background:var(--cream)}
+.projects-filter{display:flex;gap:10px;margin-bottom:44px;flex-wrap:wrap}
+.filter-btn{font-size:12px;font-weight:500;letter-spacing:.08em;padding:8px 20px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-3);cursor:pointer;transition:all .2s}
+.filter-btn.active,.filter-btn:hover{background:var(--navy);color:var(--white);border-color:var(--navy)}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.proj-card{background:var(--white);padding:40px 34px;border-left:3px solid transparent;transition:all .3s;position:relative;overflow:hidden;cursor:pointer}
+.proj-card::before{content:'';position:absolute;inset:0;background:var(--navy);transform:translateY(100%);transition:transform .4s cubic-bezier(.22,.61,.36,1);z-index:0}
+.proj-card:hover::before{transform:translateY(0)}
+.proj-card:hover{border-left-color:var(--gold)}
+.proj-card>*{position:relative;z-index:1;transition:color .3s}
+.proj-tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--navy-3);background:var(--cream);border:1px solid var(--border);padding:4px 11px;border-radius:2px;margin-bottom:22px;transition:all .3s}
+.proj-card:hover .proj-tag{background:rgba(200,149,42,.2);color:var(--gold-l);border-color:rgba(200,149,42,.3)}
+.proj-metric{font-family:'Playfair Display',serif;font-size:46px;color:var(--navy);line-height:1;transition:color .3s}
+.proj-metric span{color:var(--gold)}
+.proj-card:hover .proj-metric{color:var(--gold-l)}
+.proj-metric-lbl{font-size:11px;color:var(--text-3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:18px;transition:color .3s}
+.proj-title{font-size:17px;font-weight:600;color:var(--navy);margin-bottom:10px;transition:color .3s}
+.proj-card:hover .proj-title{color:var(--white)}
+.proj-desc{font-size:13px;color:var(--text-2);line-height:1.7;margin-bottom:18px;transition:color .3s}
+.proj-card:hover .proj-desc,.proj-card:hover .proj-metric-lbl{color:rgba(255,255,255,.7)}
+.proj-tools{display:flex;flex-wrap:wrap;gap:6px}
+.tool-chip{font-size:11px;color:var(--text-3);background:var(--cream);border:1px solid var(--border);padding:3px 10px;border-radius:20px;transition:all .3s}
+.proj-card:hover .tool-chip{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);border-color:rgba(255,255,255,.12)}
 
-						<!-- Posts -->
-							<section class="posts">
-								<article>
-									<header>
-										<span class="date">June 17, 2020</span>
-										<h2><a href="fullstory2.html">FLATTENING<br />
-										THE CURVE (COVID-19)</a></h2>
-									</header>
-									<a href="fullstory2.html" class="image fit"><img src="images/Cov19-2.jfif" alt="" /></a>
-									<p>Over the past few days, I have invested time learning as much as possible about COVID-19 in Nigeria.
-										I recently came across the trend FLATTENING THE CURVE from JOHNS HOPKINS UNIVERSITY RESOURCE CENTER and decided to use my simple charts to make a story about the Nigeria pandemic.	</p>
-									<ul class="actions special">
-										<li><a href="fullstory2.html" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">May 29, 2020</span>
-										<h2><a href="fullstory1.html">REAL-TIME DASHBOARD<br />
-										POWER BI</a></h2>
-									</header>
-									<a href="fullstory1.html" class="image fit"><img src="images/CoV19.gif" alt="" /></a>
-									<p>Finally I completed this creative dashboard for COVID-19 CASES in Nigeria.			
-										Below is the Progressive chart from February to May 27th 2020.</p>
-									<ul class="actions special">
-										<li><a href="fullstory1.html" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">Nov 20, 2021</span>
-										<h2><a href="fullstory3.html">SUPERSTORE - DASHBOARD<br />
-										POWER BI</a></h2>
-									</header>
-									<a href="fullstory3.html" class="image fit"><img src="images/Sale performance.jpg" alt="" /></a>
-									<p>This Dashboard was developed to discover insights regarding the performances of Wilson Superstore from Year - 2018 to Year - 2021.
-									This will enable manager to solve business problems and improve operations in order to generate more revenue and meet organisational goals.</p>
-									<ul class="actions special">
-										<li><a href="fullstory3.html" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<!-- <article>
-									<header>
-										<span class="date">April 18, 2017</span>
-										<h2><a href="#">Ante mattis<br />
-										interdum dolor</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 14, 2017</span>
-										<h2><a href="#">Tempus sed<br />
-										nulla imperdiet</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 11, 2017</span>
-										<h2><a href="#">Odio magna<br />
-										sed consectetur</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">April 7, 2017</span>
-										<h2><a href="#">Augue lorem<br />
-										primis vestibulum</a></h2>
-									</header>
-									<a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
-									<ul class="actions special">
-										<li><a href="#" class="button">Full Story</a></li>
-									</ul>
-								</article>
-							</section> -->
+/* SKILLS */
+#skills{background:var(--navy);position:relative;overflow:hidden}
+.skills-bg{position:absolute;inset:0;background-image:radial-gradient(circle at 20% 50%,rgba(200,149,42,.06) 0%,transparent 60%),radial-gradient(circle at 80% 20%,rgba(200,149,42,.04) 0%,transparent 50%)}
+.skills-inner{position:relative;z-index:1}
+.skills-tabs{display:flex;gap:4px;margin-bottom:44px;background:rgba(255,255,255,.05);padding:4px;border-radius:var(--r);width:fit-content;flex-wrap:wrap}
+.skill-tab{font-size:12px;font-weight:500;letter-spacing:.06em;padding:9px 22px;border-radius:2px;border:none;background:transparent;color:rgba(255,255,255,.45);cursor:pointer;transition:all .25s}
+.skill-tab.active{background:var(--gold);color:var(--navy);font-weight:600}
+.skill-panel{display:none}
+.skill-panel.active{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;animation:fadeInUp .4s ease}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.skill-item{padding:22px 20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--r);transition:all .25s;display:flex;flex-direction:column;gap:10px}
+.skill-item:hover{background:rgba(200,149,42,.08);border-color:rgba(200,149,42,.25);transform:translateY(-3px)}
+.skill-name{font-size:14px;font-weight:500;color:rgba(255,255,255,.85)}
+.skill-bar-track{height:3px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
+.skill-bar-fill{height:100%;background:linear-gradient(90deg,var(--gold-d),var(--gold));border-radius:2px;width:0;transition:width 1s cubic-bezier(.4,0,.2,1)}
+.skill-level{font-size:10px;color:var(--gold);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
 
-						<!-- Footer -->
-							<!--<footer>
-								<div class="pagination">
-									<a href="#" class="previous">Prev</a>-->
-								<!--	<a href="#" class="page active">1</a>
-									<a href="#" class="page">2</a>
-									<a href="#" class="page">3</a>
-									<span class="extra">&hellip;</span>
-									<a href="#" class="page">8</a>
-									<a href="#" class="page">9</a>
-									<a href="#" class="page">10</a>
-									<a href="#" class="next">Next</a>
-								</div>
-							</footer> -->
+/* TIMELINE */
+#experience{background:var(--cream-2)}
+.timeline{position:relative;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:0;top:12px;bottom:12px;width:1px;background:linear-gradient(to bottom,var(--gold),rgba(200,149,42,.1))}
+.tl-item{position:relative;margin-bottom:60px;cursor:pointer}
+.tl-dot{position:absolute;left:-38px;top:10px;width:12px;height:12px;border-radius:50%;background:var(--gold);border:2px solid var(--cream-2);box-shadow:0 0 0 4px rgba(200,149,42,.2);transition:transform .2s,box-shadow .2s}
+.tl-item:hover .tl-dot{transform:scale(1.4);box-shadow:0 0 0 6px rgba(200,149,42,.15)}
+.tl-header{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
+.tl-dates{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.tl-role{font-size:19px;font-weight:600;color:var(--navy)}
+.tl-company{font-size:14px;color:var(--text-3);margin-bottom:4px}
+.tl-context{font-size:12px;color:var(--text-3);font-style:italic}
+.tl-toggle{width:30px;height:30px;border-radius:50%;background:var(--white);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;color:var(--gold);transition:all .2s;margin-top:8px;line-height:1}
+.tl-item:hover .tl-toggle{background:var(--gold);color:var(--navy)}
+.tl-body{max-height:0;overflow:hidden;opacity:0;transition:max-height .5s cubic-bezier(.4,0,.2,1),opacity .4s}
+.tl-body.open{max-height:600px;opacity:1}
+.tl-bullets{list-style:none;margin-top:18px;display:flex;flex-direction:column;gap:10px}
+.tl-bullets li{font-size:14px;color:var(--text-2);line-height:1.65;padding-left:18px;position:relative}
+.tl-bullets li::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:12px;top:2px}
+.tl-hl{color:var(--navy);font-weight:600}
 
-					</div>
+/* CERTIFICATIONS */
+#certifications{background:var(--white)}
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.cert-card{border:1px solid var(--border);padding:26px;border-radius:var(--r);display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden;transition:all .3s}
+.cert-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:width .4s ease}
+.cert-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 12px 32px rgba(200,149,42,.1)}
+.cert-card:hover::after{width:100%}
+.cert-issuer{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.cert-name{font-size:15px;font-weight:500;color:var(--navy);line-height:1.4}
+.cert-type{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:2px;margin-top:6px;width:fit-content}
+.cert-type.core{color:var(--navy-3);background:rgba(8,23,46,.07);border:1px solid rgba(8,23,46,.12)}
+.cert-type.ai{color:var(--gold-d);background:rgba(200,149,42,.08);border:1px solid rgba(200,149,42,.2)}
 
-				<!-- Footer -->
-					<footer id="footer">
-						<section>
-							<form method="post" action="#">
-								<div class="fields">
-									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div class="field">
-										<label for="email">Email</label>
-										<input type="text" name="email" id="email" />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="3"></textarea>
-									</div>
-								</div>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</form>
-						</section>
-						<section class="split contact">
-							<section class="alt">
-								<h3>Address</h3>
-								<p>Lagos, Nigeria.</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="tel:+2347067286651">(+234) 70-67286651</a></p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="mailto:oritogunfemi@gmail.com">oritogunfemi@gmail.com</a></p>
-							</section>
-							<section>
-								<h3>Connect</h3>
-								<ul class="icons alt">
-									<li><a href="https://www.linkedin.com/in/femioritogun/" class="icon brands alt fa-linkedin"><span class="label">linkedin</span></a></li>
-									<li><a href="https://github.com/oritogunf" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-								</ul>
-							</section>
-						</section>
-					</footer>
+/* CONTACT */
+#contact{background:var(--navy);position:relative;overflow:hidden}
+.contact-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(200,149,42,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(200,149,42,.03) 1px,transparent 1px);background-size:48px 48px}
+.contact-layout{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:start}
+.contact-left p{font-size:15px;color:rgba(255,255,255,.6);line-height:1.85;margin-bottom:40px}
+.contact-details{display:flex;flex-direction:column;gap:18px}
+.c-row{display:flex;align-items:center;gap:16px}
+.c-icon{width:40px;height:40px;border:1px solid rgba(200,149,42,.25);display:flex;align-items:center;justify-content:center;border-radius:2px;flex-shrink:0;transition:all .2s}
+.c-row:hover .c-icon{background:var(--gold);border-color:var(--gold)}
+.c-text{font-size:14px;color:rgba(255,255,255,.7)}
+.c-text a{color:rgba(255,255,255,.7);text-decoration:none;transition:color .2s}
+.c-text a:hover{color:var(--gold-l)}
+.contact-form{display:flex;flex-direction:column;gap:16px}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.f-group{display:flex;flex-direction:column;gap:6px}
+.f-label{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.f-input,.f-textarea,.f-select{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--white);font-family:'Outfit',sans-serif;font-size:14px;padding:13px 16px;border-radius:var(--r);outline:none;transition:border-color .2s,background .2s;width:100%}
+.f-input:focus,.f-textarea:focus,.f-select:focus{border-color:var(--gold);background:rgba(200,149,42,.05)}
+.f-input::placeholder,.f-textarea::placeholder{color:rgba(255,255,255,.2)}
+.f-select option{background:var(--navy-2);color:var(--white)}
+.f-textarea{resize:vertical;min-height:120px}
+.f-submit{display:flex;align-items:center;gap:10px;background:var(--gold);color:var(--navy);font-family:'Outfit',sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:15px 30px;border:none;border-radius:2px;cursor:pointer;transition:all .2s;width:fit-content}
+.f-submit:hover{background:var(--gold-l);transform:translateY(-2px)}
+.f-arrow{transition:transform .2s;display:inline-block}
+.f-submit:hover .f-arrow{transform:translateX(4px)}
 
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; copyright 2021</li><li>Femi Oritogun</li></ul>
-					</div>
+footer{background:#040D1A;padding:28px 56px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.04)}
+.foot-logo{font-family:'Playfair Display',serif;font-size:18px;color:rgba(255,255,255,.35)}
+.foot-logo span{color:var(--gold);font-style:italic}
+footer p{font-size:12px;color:rgba(255,255,255,.25)}
+.foot-links{display:flex;gap:20px}
+.foot-links a{font-size:12px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s}
+.foot-links a:hover{color:var(--gold)}
 
-			</div>
+.toast{position:fixed;bottom:32px;right:32px;background:var(--navy);color:var(--white);border:1px solid var(--gold);border-radius:var(--r);padding:14px 22px;font-size:14px;z-index:9000;transform:translateY(80px);opacity:0;transition:all .4s cubic-bezier(.22,.61,.36,1)}
+.toast.show{transform:translateY(0);opacity:1}
+.toast b{color:var(--gold)}
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+@media(max-width:900px){
+  nav{padding:0 24px}.nav-links,.nav-cta{display:none}
+  section,#hero,#about,#contact{padding:70px 24px}
+  #about{grid-template-columns:1fr}.projects-grid{grid-template-columns:1fr}
+  .contact-layout{grid-template-columns:1fr}.f-row{grid-template-columns:1fr}
+  .hero-stats{flex-wrap:wrap;gap:28px}
+  footer{flex-direction:column;gap:10px;text-align:center;padding:20px 24px}
+  #cursor,#cursor-ring{display:none}body{cursor:auto}
+}
+</style>
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<div id="progress-bar"></div>
+<div class="toast" id="toast"><b>Message sent!</b> Femi will be in touch soon.</div>
 
-	</body>
+<nav id="navbar">
+  <div class="nav-logo">Femi<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Hire Me</a>
+</nav>
+
+<section id="hero">
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Open to Remote · Senior Data Analyst</div>
+    <h1 class="hero-name">Femi<br><em>Oritogun</em></h1>
+    <p class="hero-role">Fintech &amp; Banking Analytics · Predictive Modelling · BI Systems</p>
+    <p class="hero-desc">I turn complex data into decisions that move businesses forward. Six years across Sterling Bank, Market Force Technologies, and Titan Trust Bank — specialising in behavioural analytics, churn modelling, and risk intelligence at scale.</p>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num" data-target="43" data-suffix="%">0%</span><span class="stat-lbl">Dormant users reactivated</span></div>
+      <div class="stat"><span class="stat-num" data-target="200" data-prefix="$" data-suffix="M+">$0</span><span class="stat-lbl">Transactions monitored</span></div>
+      <div class="stat"><span class="stat-num" data-target="68" data-suffix="%">0%</span><span class="stat-lbl">Reporting time reduced</span></div>
+      <div class="stat"><span class="stat-num" data-target="6" data-suffix="+">0</span><span class="stat-lbl">Years in fintech &amp; banking</span></div>
+    </div>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-gold">Get in Touch ↓</a>
+      <a href="#projects" class="btn-ghost">View Projects →</a>
+    </div>
+  </div>
+  <div class="scroll-hint"><div class="scroll-line"></div>Scroll to explore</div>
+</section>
+
+<section id="about">
+  <div class="reveal">
+    <div style="position:relative">
+      <div class="about-img-frame"><div class="about-monogram">FO</div></div>
+      <div class="about-badge"><div class="about-badge-num">6+</div><div class="about-badge-lbl">Years Exp.</div></div>
+    </div>
+  </div>
+  <div class="reveal reveal-d1">
+    <div class="sec-label">Who I Am</div>
+    <h2 class="sec-title">Lagos-based analyst,<br>global-ready mindset</h2>
+    <p>I design, develop, and implement data-driven solutions that deliver actionable insight — helping organisations serve clients better while meeting strategic objectives. My work spans fintech, banking, and supply chain across Nigeria and East Africa.</p>
+    <p>From reactivating dormant users at Sterling Bank to achieving 92% OTIF fulfilment across 50,000+ retail outlets in Africa, I bring the full analytics lifecycle: data engineering, predictive modelling, BI delivery, and executive storytelling.</p>
+    <p>I'm equally comfortable owning a project independently or driving cross-functional alignment across product, engineering, and risk teams.</p>
+    <div class="about-pills">
+      <span class="pill">Behavioural Analytics</span><span class="pill">Churn Modelling</span><span class="pill">Risk Intelligence</span><span class="pill">Power BI</span><span class="pill">Python</span><span class="pill">PostgreSQL</span><span class="pill">Tableau</span><span class="pill">SSIS</span>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="reveal">
+    <div class="sec-label">Featured Work</div>
+    <h2 class="sec-title">Projects &amp; Case Studies</h2>
+    <p class="sec-sub">Hover each card to reveal details. Filter by domain.</p>
+  </div>
+  <div class="projects-filter reveal reveal-d1">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="retention">Retention</button>
+    <button class="filter-btn" data-filter="risk">Risk</button>
+    <button class="filter-btn" data-filter="supplychain">Supply Chain</button>
+    <button class="filter-btn" data-filter="automation">Automation</button>
+    <button class="filter-btn" data-filter="product">Product</button>
+  </div>
+  <div class="projects-grid">
+    <div class="proj-card reveal" data-cat="retention"><span class="proj-tag">Retention Analytics</span><div class="proj-metric"><span>43</span>%</div><div class="proj-metric-lbl">Dormant user reactivation</div><div class="proj-title">Retention Intelligence Dashboard</div><p class="proj-desc">Behavioural drop-off analysis across a 2M+ user base enabling hyper-personalised re-engagement campaigns that reactivated nearly half of all dormant accounts.</p><div class="proj-tools"><span class="tool-chip">Power BI</span><span class="tool-chip">PostgreSQL</span><span class="tool-chip">Python</span><span class="tool-chip">Amplitude</span></div></div>
+    <div class="proj-card reveal reveal-d1" data-cat="retention"><span class="proj-tag">Predictive Modelling</span><div class="proj-metric"><span>17</span>%</div><div class="proj-metric-lbl">Campaign response uplift</div><div class="proj-title">RFM Segmentation &amp; Churn Pipeline</div><p class="proj-desc">End-to-end RFM pipeline with integrated predictive churn scoring and LTV modelling, enabling precision-targeted upsell workflows across product and marketing.</p><div class="proj-tools"><span class="tool-chip">Python</span><span class="tool-chip">Pandas</span><span class="tool-chip">SQL</span><span class="tool-chip">Mixpanel</span></div></div>
+    <div class="proj-card reveal reveal-d2" data-cat="risk"><span class="proj-tag">Risk Intelligence</span><div class="proj-metric"><span>35</span>%</div><div class="proj-metric-lbl">Wider loan segment visibility</div><div class="proj-title">Risk Portfolio Management Dashboard</div><p class="proj-desc">Loan performance dashboard improving early NPL detection, shifting the risk team from reactive escalation to proactive portfolio management.</p><div class="proj-tools"><span class="tool-chip">Power BI</span><span class="tool-chip">DAX</span><span class="tool-chip">Oracle SQL</span><span class="tool-chip">SSRS</span></div></div>
+    <div class="proj-card reveal" data-cat="supplychain"><span class="proj-tag">Supply Chain</span><div class="proj-metric"><span>92</span>%</div><div class="proj-metric-lbl">OTIF fulfilment rate</div><div class="proj-title">Real-Time Inventory &amp; Logistics Dashboards</div><p class="proj-desc">Live supply gap visibility across 50,000+ retail outlets in East &amp; West Africa, supporting $200M+ in merchant GMV and order revenue.</p><div class="proj-tools"><span class="tool-chip">Tableau</span><span class="tool-chip">Python</span><span class="tool-chip">PostgreSQL</span><span class="tool-chip">Superset</span></div></div>
+    <div class="proj-card reveal reveal-d1" data-cat="automation"><span class="proj-tag">Automation</span><div class="proj-metric"><span>68</span>%</div><div class="proj-metric-lbl">Reporting time reduction</div><div class="proj-title">Automated Reporting Infrastructure</div><p class="proj-desc">Eliminated manual data pulls for 15+ recurring reports across product, risk, and executive teams — delivering scheduled insights without analyst intervention.</p><div class="proj-tools"><span class="tool-chip">SSIS</span><span class="tool-chip">Power BI</span><span class="tool-chip">Python</span><span class="tool-chip">SQL Server</span></div></div>
+    <div class="proj-card reveal reveal-d2" data-cat="product"><span class="proj-tag">Product Analytics</span><div class="proj-metric"><span>23</span>%</div><div class="proj-metric-lbl">Onboarding completion uplift</div><div class="proj-title">KYC Funnel Optimisation</div><p class="proj-desc">Full KYC journey mapping, pinpointing high-friction verification stages and driving engineering fixes that significantly reduced activation drop-off.</p><div class="proj-tools"><span class="tool-chip">Amplitude</span><span class="tool-chip">SQL</span><span class="tool-chip">Google Analytics</span><span class="tool-chip">Metabase</span></div></div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="skills-bg"></div>
+  <div class="skills-inner">
+    <div class="reveal">
+      <div class="sec-label">Capabilities</div>
+      <h2 class="sec-title light">Skills &amp; Tools</h2>
+      <p class="sec-sub" style="color:rgba(255,255,255,.5)">Click a category. Hover items to see proficiency.</p>
+    </div>
+    <div class="skills-tabs reveal reveal-d1">
+      <button class="skill-tab active" data-tab="analytics">Analytics</button>
+      <button class="skill-tab" data-tab="engineering">Engineering</button>
+      <button class="skill-tab" data-tab="bi">BI &amp; Viz</button>
+      <button class="skill-tab" data-tab="product">Product</button>
+      <button class="skill-tab" data-tab="cloud">Cloud</button>
+    </div>
+    <div class="skill-panel active" id="tab-analytics">
+      <div class="skill-item"><div class="skill-name">RFM Segmentation</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div><div class="skill-level">Expert</div></div>
+      <div class="skill-item"><div class="skill-name">Predictive Churn Modelling</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div><div class="skill-level">Expert</div></div>
+      <div class="skill-item"><div class="skill-name">LTV Scoring</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div><div class="skill-level">Advanced</div></div>
+      <div class="skill-item"><div class="skill-name">Cohort Analysis</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="92"></div></div><div class="skill-level">Expert</div></div>
+      <div class="skill-item"><div class="skill-name">Demand Forecasting</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="84"></div></div><div class="skill-level">Advanced</div></div>
+      <div class="skill-item"><div class="skill-name">NPL &amp; Risk Modelling</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div><div class="skill-level">Advanced</div></div>
+    </div>
+    <div class="skill-panel" id="tab-engineering">
+      <div class="skill-item"><div class="skill-name">PostgreSQL</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div><div class="skill-level">Expert</div></div>
+      <div class="skill-item"><div class="skill-name">Oracle SQL</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div><div class="skill-level">Advanced</div></div>
+      <div class="skill-item"><div class="skill-name">SQL Server</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div><div class="skill-level">Expert</div></div>
+      <div class="skill-item"><div class="skill-name">Python (Pandas, NumPy)</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div><div class="skill-level">Advanced</div></div>
+      <div class="skill-item"><div class="skill-name">SSIS / ETL Pipelines</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div><div class="skill-level">Advanced</div></div>
+      <div class="skill-item"><div class="skill-name">Data Modelling</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div><div class="skill-level">Advanced</div></div>
+    </div>
+    <div class="skill-panel" id="tab-bi">
+      <div class="skill-item"><div class="skill-name">Power BI (DAX, Power Query)</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="96"></div></div><div class="skill-level">Expert</div></div>
+      <div class="skill-item"><div class="skill-name">Tableau</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div><div class="skill-level">Advanced</div></div>
+      <div class="skill-item"><div class="skill-name">Looker</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="78"></div></div><div class="skill-level">Proficient</div></div>
+      <div class="skill-item"><div class="skill-name">Apache Superset</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div><div class="skill-level">Advanced</div></div>
+      <div class="skill-item"><div class="skill-name">Metabase</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div><div class="skill-level">Advanced</div></div>
+      <div class="skill-item"><div class="skill-name">SSRS</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="84"></div></div><div class="skill-level">Advanced</div></div>
+    </div>
+    <div class="skill-panel" id="tab-product">
+      <div class="skill-item"><div class="skill-name">Amplitude</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div><div class="skill-level">Advanced</div></div>
+      <div class="skill-item"><div class="skill-name">Mixpanel</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="82"></div></div><div class="skill-level">Advanced</div></div>
+      <div class="skill-item"><div class="skill-name">Google Analytics</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div><div class="skill-level">Advanced</div></div>
+      <div class="skill-item"><div class="skill-name">KYC Funnel Analysis</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div><div class="skill-level">Expert</div></div>
+      <div class="skill-item"><div class="skill-name">NPS &amp; CSAT Analytics</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="88"></div></div><div class="skill-level">Advanced</div></div>
+    </div>
+    <div class="skill-panel" id="tab-cloud">
+      <div class="skill-item"><div class="skill-name">Microsoft Azure</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="72"></div></div><div class="skill-level">Proficient</div></div>
+      <div class="skill-item"><div class="skill-name">Azure Data Factory</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="70"></div></div><div class="skill-level">Proficient</div></div>
+      <div class="skill-item"><div class="skill-name">Power Platform</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div><div class="skill-level">Advanced</div></div>
+      <div class="skill-item"><div class="skill-name">KNIME</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="74"></div></div><div class="skill-level">Proficient</div></div>
+      <div class="skill-item"><div class="skill-name">SSAS</div><div class="skill-bar-track"><div class="skill-bar-fill" data-width="76"></div></div><div class="skill-level">Proficient</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="reveal">
+    <div class="sec-label">Career History</div>
+    <h2 class="sec-title">Work Experience</h2>
+    <p class="sec-sub">Click each role to expand details.</p>
+  </div>
+  <div class="timeline">
+    <div class="tl-item reveal" onclick="toggleTL(this)">
+      <div class="tl-dot"></div>
+      <div class="tl-header">
+        <div><div class="tl-dates">May 2023 — Present</div><div class="tl-role">Senior Data &amp; BI Analyst</div><div class="tl-company">Sterling Bank Plc · Lagos, Nigeria</div><div class="tl-context">Leading commercial bank · 5M+ customers · listed on the NGX</div></div>
+        <div class="tl-toggle">+</div>
+      </div>
+      <div class="tl-body"><ul class="tl-bullets">
+        <li>Reactivated <span class="tl-hl">43% of dormant users</span> across a 2M+ customer base through a behavioural drop-off dashboard enabling hyper-personalised campaigns.</li>
+        <li>Drove <span class="tl-hl">17% improvement in campaign response rates</span> via end-to-end RFM segmentation pipeline with integrated churn and LTV scoring.</li>
+        <li>Improved <span class="tl-hl">onboarding completion by 23%</span> by mapping the KYC journey and influencing engineering fixes that reduced activation friction.</li>
+        <li>Widened loan segment visibility by <span class="tl-hl">35%</span> through a risk portfolio dashboard enabling proactive NPL management.</li>
+        <li>Reduced <span class="tl-hl">incident response time by 37%</span> with an automated real-time alert system monitoring high-value transaction failures.</li>
+        <li>Cut <span class="tl-hl">reporting time by 68%</span> by automating 15+ recurring reports across product, risk, and executive teams.</li>
+      </ul></div>
+    </div>
+    <div class="tl-item reveal reveal-d1" onclick="toggleTL(this)">
+      <div class="tl-dot"></div>
+      <div class="tl-header">
+        <div><div class="tl-dates">Nov 2022 — Mar 2023</div><div class="tl-role">Supply Chain / Data Analyst</div><div class="tl-company">Market Force Technologies · Nairobi, Kenya (Remote)</div><div class="tl-context">B2B supply chain · 50,000+ outlets across East &amp; West Africa</div></div>
+        <div class="tl-toggle">+</div>
+      </div>
+      <div class="tl-body"><ul class="tl-bullets">
+        <li>Achieved <span class="tl-hl">92% OTIF fulfilment rate</span> across 50,000+ retail outlets supporting <span class="tl-hl">$200M+ in merchant GMV</span>.</li>
+        <li>Improved demand forecast accuracy by <span class="tl-hl">21% MAPE reduction</span> through demand fluctuation modelling.</li>
+        <li>Increased inventory turnover by <span class="tl-hl">18%</span> and reduced DSI through SKU velocity and warehouse aging analysis.</li>
+        <li>Contributed to a <span class="tl-hl">20% uplift in monthly revenue</span> by surfacing supply chain insights to prioritise high-value merchants.</li>
+      </ul></div>
+    </div>
+    <div class="tl-item reveal reveal-d2" onclick="toggleTL(this)">
+      <div class="tl-dot"></div>
+      <div class="tl-header">
+        <div><div class="tl-dates">Feb 2021 — Nov 2022</div><div class="tl-role">Data Analyst</div><div class="tl-company">Titan Trust Bank · Lagos, Nigeria</div></div>
+        <div class="tl-toggle">+</div>
+      </div>
+      <div class="tl-body"><ul class="tl-bullets">
+        <li>Increased digital transaction volume by <span class="tl-hl">15%</span> by leading self-service reporting system design for e-channel activity tracking.</li>
+        <li>Reduced NPLs by <span class="tl-hl">12%</span> through automated credit risk monitoring via SSIS-driven ETL pipelines.</li>
+        <li>Re-activated <span class="tl-hl">15% of dormant accounts</span> through behavioural segmentation and predictive analytics.</li>
+        <li>Contributed to a <span class="tl-hl">10% increase in account profitability</span> through Power BI cohort models analysing NPS and CSAT.</li>
+      </ul></div>
+    </div>
+    <div class="tl-item reveal reveal-d3" onclick="toggleTL(this)">
+      <div class="tl-dot"></div>
+      <div class="tl-header">
+        <div><div class="tl-dates">Nov 2018 — Dec 2020</div><div class="tl-role">Retail Operations Analyst</div><div class="tl-company">Access Bank Plc · Lagos, Nigeria</div></div>
+        <div class="tl-toggle">+</div>
+      </div>
+      <div class="tl-body"><ul class="tl-bullets">
+        <li>Improved cross-sell success through data-driven strategies leveraging customer segmentation and performance data.</li>
+        <li>Enhanced service responsiveness by analysing CSAT and NPS data to drive customer service process improvements.</li>
+        <li>Automated branch reporting by consolidating operations, feedback, and transaction data into dynamic dashboards.</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="reveal">
+    <div class="sec-label">Credentials</div>
+    <h2 class="sec-title">Certifications</h2>
+  </div>
+  <div class="cert-grid">
+    <div class="cert-card reveal"><div class="cert-issuer">Microsoft</div><div class="cert-name">Data Analyst Associate</div><span class="cert-type core">Core</span></div>
+    <div class="cert-card reveal reveal-d1"><div class="cert-issuer">SQLBI</div><div class="cert-name">Data Modelling for Power BI</div><span class="cert-type core">Core</span></div>
+    <div class="cert-card reveal reveal-d2"><div class="cert-issuer">Microsoft</div><div class="cert-name">Power Platform Fundamentals</div><span class="cert-type core">Core</span></div>
+    <div class="cert-card reveal reveal-d3"><div class="cert-issuer">DataCamp</div><div class="cert-name">Intermediate Python</div><span class="cert-type core">Core</span></div>
+    <div class="cert-card reveal"><div class="cert-issuer">Microsoft</div><div class="cert-name">Azure Fundamentals (AZ-900)</div><span class="cert-type core">Core</span></div>
+    <div class="cert-card reveal reveal-d1"><div class="cert-issuer">DeepLearning.AI</div><div class="cert-name">Efficiently Serving LLMs</div><span class="cert-type ai">AI &amp; Emerging Tech</span></div>
+    <div class="cert-card reveal reveal-d2"><div class="cert-issuer">Google</div><div class="cert-name">Introduction to Generative AI</div><span class="cert-type ai">AI &amp; Emerging Tech</span></div>
+    <div class="cert-card reveal reveal-d3"><div class="cert-issuer">LinkedIn Learning</div><div class="cert-name">Integrating AI &amp; ML</div><span class="cert-type ai">AI &amp; Emerging Tech</span></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-bg"></div>
+  <div class="contact-layout">
+    <div class="contact-left reveal">
+      <div class="sec-label">Let's Talk</div>
+      <h2 class="sec-title light">Get in Touch</h2>
+      <p>Open to senior data analyst roles, BI analyst positions, and consulting opportunities — remote-first, with preference for fintech, banking, or growth-stage companies.</p>
+      <div class="contact-details">
+        <div class="c-row"><div class="c-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(200,149,42,.8)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="c-text"><a href="mailto:oritogunfemi@gmail.com">oritogunfemi@gmail.com</a></div></div>
+        <div class="c-row"><div class="c-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(200,149,42,.8)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l1.97-1.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div class="c-text"><a href="tel:+2347067286651">(+234) 70-67286651</a></div></div>
+        <div class="c-row"><div class="c-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(200,149,42,.8)" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><div class="c-text"><a href="https://www.linkedin.com/in/femioritogun/" target="_blank">linkedin.com/in/femioritogun</a></div></div>
+        <div class="c-row"><div class="c-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(200,149,42,.8)" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div><div class="c-text"><a href="https://github.com/oritogunf" target="_blank">github.com/oritogunf</a></div></div>
+        <div class="c-row"><div class="c-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(200,149,42,.8)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="c-text">Lagos, Nigeria · Open to Remote</div></div>
+      </div>
+    </div>
+    <form class="contact-form reveal reveal-d1" onsubmit="handleSubmit(event)">
+      <div class="f-row">
+        <div class="f-group"><label class="f-label">Name</label><input type="text" class="f-input" placeholder="Jane Smith" required/></div>
+        <div class="f-group"><label class="f-label">Company</label><input type="text" class="f-input" placeholder="Acme Corp"/></div>
+      </div>
+      <div class="f-group"><label class="f-label">Email</label><input type="email" class="f-input" placeholder="jane@acme.com" required/></div>
+      <div class="f-group"><label class="f-label">Subject</label>
+        <select class="f-input f-select">
+          <option value="" disabled selected>Select a topic…</option>
+          <option>Full-time role opportunity</option>
+          <option>Freelance / consulting project</option>
+          <option>Collaboration</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="f-group"><label class="f-label">Message</label><textarea class="f-textarea" placeholder="Tell me about the role or opportunity..." required></textarea></div>
+      <button type="submit" class="f-submit">Send Message <span class="f-arrow">→</span></button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">Femi<span>.</span></div>
+  <p>© 2026 · Femi Oritogun · Senior Data Analyst · Lagos, Nigeria</p>
+  <div class="foot-links">
+    <a href="https://www.linkedin.com/in/femioritogun/" target="_blank">LinkedIn</a>
+    <a href="https://github.com/oritogunf" target="_blank">GitHub</a>
+    <a href="mailto:oritogunfemi@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script>
+// CURSOR
+const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+document.addEventListener('mousemove',e=>{
+  cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';
+  setTimeout(()=>{ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px';},60);
+});
+document.querySelectorAll('a,button,.proj-card,.cert-card,.tl-item,.pill').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='18px';cur.style.height='18px';cur.style.background='var(--gold-l)';ring.style.width='52px';ring.style.height='52px';});
+  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';cur.style.background='var(--gold)';ring.style.width='36px';ring.style.height='36px';});
+});
+
+// PROGRESS BAR
+window.addEventListener('scroll',()=>{
+  document.getElementById('progress-bar').style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60);
+});
+
+// PARTICLES
+const pc=document.getElementById('particles');
+for(let i=0;i<28;i++){const p=document.createElement('div');p.className='particle';const s=Math.random()*5+2;p.style.cssText=`width:${s}px;height:${s}px;background:rgba(200,149,42,${Math.random()*.3+.05});left:${Math.random()*100}%;top:${Math.random()*100+100}%;animation-duration:${Math.random()*20+15}s;animation-delay:${Math.random()*15}s`;pc.appendChild(p);}
+
+// COUNTERS
+function animateCounters(){
+  document.querySelectorAll('.stat-num').forEach(el=>{
+    const target=+el.dataset.target,prefix=el.dataset.prefix||'',suffix=el.dataset.suffix||'';
+    let v=0;const step=target/(2000/16);
+    const t=setInterval(()=>{v=Math.min(v+step,target);el.textContent=prefix+Math.floor(v)+suffix;if(v>=target)clearInterval(t);},16);
+  });
+}
+let ran=false;
+new IntersectionObserver(entries=>{if(entries[0].isIntersecting&&!ran){animateCounters();ran=true;}},{threshold:.5}).observe(document.getElementById('hero'));
+
+// REVEAL
+const ro=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+// SKILL BARS
+const sbo=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.querySelectorAll('.skill-bar-fill').forEach(b=>b.style.width=b.dataset.width+'%');}),{threshold:.2});
+document.querySelectorAll('.skill-panel').forEach(p=>sbo.observe(p));
+
+// SKILL TABS
+document.querySelectorAll('.skill-tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.skill-tab').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.skill-panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    const panel=document.getElementById('tab-'+btn.dataset.tab);
+    panel.classList.add('active');
+    setTimeout(()=>panel.querySelectorAll('.skill-bar-fill').forEach(b=>b.style.width=b.dataset.width+'%'),50);
+  });
+});
+
+// TIMELINE
+function toggleTL(item){
+  const body=item.querySelector('.tl-body'),toggle=item.querySelector('.tl-toggle'),isOpen=body.classList.contains('open');
+  document.querySelectorAll('.tl-body.open').forEach(b=>{b.classList.remove('open');b.closest('.tl-item').querySelector('.tl-toggle').textContent='+';});
+  if(!isOpen){body.classList.add('open');toggle.textContent='−';}
+}
+
+// FILTER
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f=btn.dataset.filter;
+    document.querySelectorAll('.proj-card').forEach(c=>c.style.display=(f==='all'||c.dataset.cat===f)?'':'none');
+  });
+});
+
+// CONTACT
+function handleSubmit(e){
+  e.preventDefault();
+  const btn=e.target.querySelector('.f-submit');
+  btn.innerHTML='✓ Sent!';btn.style.background='#1a6b3a';btn.style.color='#fff';
+  const toast=document.getElementById('toast');toast.classList.add('show');
+  setTimeout(()=>toast.classList.remove('show'),4000);
+  setTimeout(()=>{btn.innerHTML='Send Message <span class="f-arrow">→</span>';btn.style.background='';btn.style.color='';e.target.reset();},3000);
+}
+</script>
+</body>
 </html>
